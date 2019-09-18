@@ -1,6 +1,7 @@
 package com.android.pixabaysample;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Looper;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -85,6 +87,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void getPhotos(final String searchString) {
         if(!searchString.trim().equalsIgnoreCase("")) {
+
+            InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(etSearch.getWindowToken(), 0);
+
             @SuppressLint("StaticFieldLeak") AsyncTask<Void, Void, String> myTask = new AsyncTask<Void, Void, String>() {
 
                 @Override

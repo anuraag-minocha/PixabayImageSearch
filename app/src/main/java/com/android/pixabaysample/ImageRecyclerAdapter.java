@@ -1,12 +1,18 @@
 package com.android.pixabaysample;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -16,6 +22,7 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     private ArrayList<String> arrayList = new ArrayList<>();
     Context mContext;
+    Activity mActivity;
 
     public ImageRecyclerAdapter(Context mContext, ArrayList<String> arrayList) {
         this.arrayList = arrayList;
@@ -63,7 +70,7 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
                 holder.ivPhoto.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        openFullScreen(arrayList.get(pos));
                     }
                 });
 
@@ -84,6 +91,19 @@ public class ImageRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.View
     public void updateList(ArrayList<String> arraylist){
         this.arrayList = arraylist;
         notifyDataSetChanged();
+    }
+
+    public void openFullScreen(String url){
+        Dialog dialog = new Dialog(mContext);
+        dialog.setContentView(R.layout.dialog_full_screen);
+        dialog.getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.MATCH_PARENT);
+
+        ImageView imageView = dialog.findViewById(R.id.imageView);
+
+        Picasso.get().load(url).into(imageView);
+
+        dialog.show();
     }
 
 }
