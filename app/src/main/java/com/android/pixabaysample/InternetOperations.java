@@ -15,15 +15,15 @@ public class InternetOperations {
     public static String SERVER_URL = "https://pixabay.com/api/";
     public static String API_KEY = "13665803-562bbd6db6230116df784dc4b";
 
-    public static String get(String url, String json) throws IOException {
-        RequestBody body = RequestBody.create(JSON, json);
+    public static String get(String url) throws IOException {
+
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .build();
 
-        Request request = new Request.Builder().url(url).post(body).build();
+        Request request = new Request.Builder().url(url).build();
 
         Response response = client.newCall(request).execute();
         return response.body().string();
