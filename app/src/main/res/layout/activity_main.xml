@@ -1,18 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        app:cardElevation="2dp">
+        
+
+            <RelativeLayout
+                android:id="@+id/rlSearchBar"
+                android:layout_width="match_parent"
+                android:layout_height="35sp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:visibility="visible"
+                android:background="@drawable/white_capsule">
+
+
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/etSearchbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_marginRight="40dp"
+                    android:hint="Search"
+                    android:layout_centerVertical="true"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:layout_width="35dp"
+                    android:layout_height="55dp"
+                    android:layout_centerVertical="true"
+                    android:tint="@android:color/black"
+                    android:src="@drawable/search"
+                    android:padding="5dp"
+                    android:id="@+id/ivSearch"
+                    android:layout_alignParentRight="true"/>
+
+
+            </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/topProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="38dp"
+        android:secondaryProgress="70"
+        android:visibility="visible"
+        android:indeterminate="true"/>
+    
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="38dp"
+        android:id="@+id/recyclerView">
+    </android.support.v7.widget.RecyclerView>
 
-</android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>
+
