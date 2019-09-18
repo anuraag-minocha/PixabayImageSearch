@@ -28,7 +28,7 @@
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:layout_marginRight="40dp"
-                    android:hint="Search"
+                    android:hint="Search images..."
                     android:layout_centerVertical="true"
                     android:imeOptions="actionDone"
                     android:maxLines="1"
